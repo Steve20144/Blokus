@@ -73,32 +73,34 @@ void Piece::rotatePieceClockwise()
     {
         for (int k = 0; k < 4; k++)
         {
-            squares[i][4-k].addPiece(squares[i][k].hasPiece());
+            squares[i][4 - k].addPiece(squares[i][k].hasPiece());
         }
     }
 }
 
 void Piece::rotatePiece(char orientaion)
 {
+    if (orientaion == 'u')
+    {
+    }
 }
 
-void  Piece::flipPiece()
+void Piece::flipPiece()
 {
     for (int i = 0; i < 2; i++)
     {
         for (int k = 5; k > 0; k++)
         {
-            if(squares[k][i].hasPiece != '-')
+            if (squares[k][i].hasPiece() != '-')
             {
-                squares[k][4-i].addPiece(pieceSquares[k][4-i]);
+                squares[k][4 - i].addPiece(squares[k][4 - i].hasPiece());
                 squares[k][i].addPiece('-');
             }
-            else{
-                squares[k][i].addPiece(pieceSquares[k][4-i]);
-                squares[k][4-i].addPiece('-');
+            else
+            {
+                squares[k][i].addPiece(squares[k][4 - i].hasPiece());
+                squares[k][4 - i].addPiece('-');
             }
-
-
         }
     }
 }
