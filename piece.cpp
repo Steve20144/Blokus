@@ -24,7 +24,7 @@ Piece::Piece(int pieceId, char piecePlayer, char pieceSquares[5][5])
                 squares[i][k].addPiece(pieceSquares[i][k]);
             }
             else
-                squares[i][k].addPiece(pieceSquares[i][k]);
+                squares[i][k].addPiece('-');
         }
     }
 }
@@ -69,11 +69,15 @@ bool Piece::squareHasPiece(int x, int y)
 
 void Piece::rotatePieceClockwise()
 {
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 2; i++)
     {
-        for (int k = 0; k < 5; k++)
+        for (int k = 0; k < 4; k++)
         {
-            squares[i][k] = squares[k][i];
+            squares[4 - i][k].addPiece(squares[i][k].hasPiece());
         }
     }
+}
+
+void Piece::rotatePiece(char orientaion)
+{
 }
