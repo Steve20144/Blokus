@@ -80,8 +80,24 @@ void Piece::rotatePieceClockwise()
 
 void Piece::rotatePiece(char orientaion)
 {
-    if (orientaion == 'u')
+    switch (orientaion)
     {
+    case 'r':
+        rotatePieceClockwise();
+        break;
+    case 'd':
+        rotatePieceClockwise();
+        rotatePieceClockwise();
+        break;
+    case 'l':
+        rotatePieceClockwise();
+        rotatePieceClockwise();
+        rotatePieceClockwise();
+        break;
+    case 'u':
+        break;
+    default:
+        break;
     }
 }
 
