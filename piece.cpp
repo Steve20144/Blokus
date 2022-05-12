@@ -73,7 +73,7 @@ void Piece::rotatePieceClockwise()
     {
         for (int k = 0; k < 4; k++)
         {
-            squares[4 - i][k].addPiece(squares[i][k].hasPiece());
+            squares[i][4-k].addPiece(squares[i][k].hasPiece());
         }
     }
 }
