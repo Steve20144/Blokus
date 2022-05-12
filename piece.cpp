@@ -81,3 +81,24 @@ void Piece::rotatePieceClockwise()
 void Piece::rotatePiece(char orientaion)
 {
 }
+
+void  Piece::flipPiece()
+{
+    for (int i = 0; i < 2; i++)
+    {
+        for (int k = 5; k > 0; k++)
+        {
+            if(squares[k][i].hasPiece != '-')
+            {
+                squares[k][4-i].addPiece(pieceSquares[k][4-i]);
+                squares[k][i].addPiece('-');
+            }
+            else{
+                squares[k][i].addPiece(pieceSquares[k][4-i]);
+                squares[k][4-i].addPiece('-');
+            }
+
+
+        }
+    }
+}
