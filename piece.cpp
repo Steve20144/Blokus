@@ -69,11 +69,11 @@ bool Piece::squareHasPiece(int x, int y)
 
 void Piece::rotatePieceClockwise()
 {
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < 4; i++)
     {
         for (int k = 0; k < 4; k++)
         {
-            squares[i][4 - k].addPiece(squares[i][k].hasPiece());
+            squares[4 - k][4 - i].addPiece(squares[i][4 - k].hasPiece());
         }
     }
 }
