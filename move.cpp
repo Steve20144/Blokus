@@ -2,11 +2,11 @@
 
 Move::Move(Piece movePiece, int moveX, int moveY, char moveOrientation, char moveFlip)
 {
-    piece=movePiece;
-    x=moveX;
-    y=moveY;
-    orientation=moveOrientation;
-    flip=moveFlip;
+    piece = movePiece;
+    x = moveX;
+    y = moveY;
+    orientation = moveOrientation;
+    flip = moveFlip;
 }
 
 int Move::getX()
@@ -26,10 +26,9 @@ char Move::getFlip()
     return flip;
 }
 
-
-
-
-
-
+Piece Move::getPiece()
+{
+    return piece;
+}
 
 // TODO: Implement here the methods of Move

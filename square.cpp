@@ -11,10 +11,8 @@ Square::Square()
 
 void Square::setCoordinates(int newx, int newy)
 {
-    cout << "Give the x coordinate: " << endl;
-    cin >> newx;
-    cout << "Give the y coordinate: " << endl;
-    cin >> newy;
+    x = newx;
+    y = newy;
 }
 
 int Square::getX()
