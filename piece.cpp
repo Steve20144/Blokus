@@ -69,11 +69,15 @@ bool Piece::squareHasPiece(int x, int y)
 
 void Piece::rotatePieceClockwise()
 {
-    for (int i = 0; i < 4; i++)
+    for(int i=0;i<3;i++)
     {
-        for (int k = 0; k < 4; k++)
+        for(int k=0; k<2; k++)
         {
-            squares[4 - k][4 - i].addPiece(squares[i][4 - k].getPlayer());
+            if (squares[k][i].getPlayer() != '-')
+            {
+                squares[4-k][k].addPiece(squares[k][i].getPlayer());
+                squares[k][i].addPiece('-');
+            }
         }
     }
 }
@@ -109,12 +113,12 @@ void Piece::flipPiece()
         {
             if (squares[k][i].getPlayer() != '-')
             {
-                squares[k][4 - i].addPiece(squares[k][4 - i].getPlayer());
+                squares[k][4 - i].addPiece(squares[k][i].getPlayer());
                 squares[k][i].addPiece('-');
             }
             else
             {
-                squares[k][i].addPiece(squares[k][4 - i].getPlayer());
+                squares[k][i].addPiece(squares[k][i].getPlayer());
                 squares[k][4 - i].addPiece('-');
             }
         }
