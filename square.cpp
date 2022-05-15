@@ -38,17 +38,20 @@ bool Square::hasPiece()
 {
     if (player == '-')
         return false;
-    switch (player)
-    {
-    case '#':
-        return '#';
-        break;
-    case 'O':
-        return 'O';
-        break;
-    default:
-        break;
-    }
+    else
+        return true;
+
+    // switch (player)
+    // {
+    // case '#':
+    //     return '#';
+    //     break;
+    // case 'O':
+    //     return 'O';
+    //     break;
+    // default:
+    //     break;
+    // }
 }
 
 char Square::getPlayer()
