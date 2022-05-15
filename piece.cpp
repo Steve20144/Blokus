@@ -79,6 +79,43 @@ void Piece::rotatePieceClockwise()
                 squares[k][i].addPiece('-');
             }
         }
+        
+    }
+    for(i=0;i<2;i++)
+    {
+        for(int k=2; k<5; k++)
+        {
+            if (squares[k][i].getPlayer() != '-')
+            {
+                squares[4-k][k].addPiece(squares[k][i].getPlayer());
+                squares[k][i].addPiece('-');
+            }
+        }
+        
+    }
+    for(int i=2;i<5;i++)
+    {
+        for(int k=3; k<5; k++)
+        {
+            if (squares[k][i].getPlayer() != '-')
+            {
+                squares[4-k][k].addPiece(squares[k][i].getPlayer());
+                squares[k][i].addPiece('-');
+            }
+        }
+        
+    }
+    for(int i=3;i<5;i++)
+    {
+        for(int k=0; k<3; k++)
+        {
+            if (squares[k][i].getPlayer() != '-')
+            {
+                squares[4-k][k].addPiece(squares[k][i].getPlayer());
+                squares[k][i].addPiece('-');
+            }
+        }
+        
     }
 }
 
