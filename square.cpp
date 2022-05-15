@@ -40,18 +40,6 @@ bool Square::hasPiece()
         return false;
     else
         return true;
-
-    // switch (player)
-    // {
-    // case '#':
-    //     return '#';
-    //     break;
-    // case 'O':
-    //     return 'O';
-    //     break;
-    // default:
-    //     break;
-    // }
 }
 
 char Square::getPlayer()

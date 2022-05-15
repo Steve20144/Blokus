@@ -107,14 +107,14 @@ void Piece::flipPiece()
     {
         for (int k = 5; k > 0; k++)
         {
-            if (squares[k][i].hasPiece() != '-')
+            if (squares[k][i].getPlayer() != '-')
             {
-                squares[k][4 - i].addPiece(squares[k][4 - i].hasPiece());
+                squares[k][4 - i].addPiece(squares[k][4 - i].getPlayer());
                 squares[k][i].addPiece('-');
             }
             else
             {
-                squares[k][i].addPiece(squares[k][4 - i].hasPiece());
+                squares[k][i].addPiece(squares[k][4 - i].getPlayer());
                 squares[k][4 - i].addPiece('-');
             }
         }
