@@ -73,6 +73,7 @@ void Piece::rotatePieceClockwise()
     {
         for(int k=0; k<2; k++)
         {
+            int temp = 0;
             if (squares[k][i].getPlayer() != '-')
             {
                 squares[4-k][k].addPiece(squares[k][i].getPlayer());
@@ -81,7 +82,7 @@ void Piece::rotatePieceClockwise()
         }
         
     }
-    for(i=0;i<2;i++)
+    for(int i=0;i<2;i++)
     {
         for(int k=2; k<5; k++)
         {
