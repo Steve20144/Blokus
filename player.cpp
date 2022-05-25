@@ -6,26 +6,26 @@
 
 Player::Player(int id)
 {
-    this -> id = id;
+    this->id = id;
     cout << "Give your name: " << endl;
     cin >> name;
     numPieces = 21;
-    numPlacedPieces = 0;
+    // numPlacedPieces = 0;
     createPieces();
 }
 
 int Player::getId()
 {
-     return id;
+    return id;
 }
 
 char Player::getSymbol()
 {
-    if(id == 0)
+    if (id == 0)
     {
         return '#';
     }
-    else if(id == 1)
+    else if (id == 1)
     {
         return '0';
     }
@@ -33,24 +33,39 @@ char Player::getSymbol()
 
 string Player::getName()
 {
-    if(id == 0) 
+    if (id == 0)
     {
         return "Player 1";
     }
-    if(id == 1)
+    if (id == 1)
     {
         return "Player 2";
     }
 }
 
-Piece* Player::getPiece(int index)
+Piece *Player::getPiece(int index)
 {
-    pieces(index);
-}
+    for (int i = 0; i < 5; i++)
+    {
+        for (int k = 0; k < 5; k++)
+        {
+            if (pieces[i][k].getId() == index)
 
+                return (*(pieces + i) + k);
+        }
+    }
+}
 
 int Player::getNumberOfAvailablePieces()
 {
-    return 21 - numPlacedPieces;
+    int counter = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        for (int k = 0; k < 5; k++)
+        {
+            if (pieces[i][k].isPlaced() == true)
+                counter++;
+        }
+    }
+    return counter;
 }
-

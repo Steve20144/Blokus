@@ -9,14 +9,17 @@
 /**
  * Class that implements a player of the game.
  */
-class Player {
+class Player
+{
 private:
     int id;
     char symbol;
+
 protected:
     string name;
-    int numPieces; // the number of pieces of the player (initialized to 21)
-    Piece** pieces; // the pieces of the player
+    int numPieces;  // the number of pieces of the player (initialized to 21)
+    Piece **pieces; // the pieces of the player
+    int numPlacedPieces;
 
 public:
     /**
@@ -59,7 +62,7 @@ public:
      * @param index the index of the piece to be returned.
      * @return a piece of the player given its index.
      */
-    Piece* getPiece(int index);
+    Piece *getPiece(int index);
 
     /**
      * Returns the number of the placed pieces of the player, i.e. the number
@@ -85,7 +88,7 @@ public:
      * @param piece the piece to check if it can be placed.
      * @return true if the piece can be placed on the board, or false otherwise.
      */
-    bool canPlacePiece(Board* board, Piece* piece);
+    bool canPlacePiece(Board *board, Piece *piece);
 
     /**
      * Checks if the player can place any piece in any square of the board, any orientation and any flip.
@@ -94,7 +97,7 @@ public:
      * @param board the board to check if any piece can be placed.
      * @return true if the piece can be placed on the board, or false otherwise.
      */
-    bool canPlaceAnyPiece(Board* board);
+    bool canPlaceAnyPiece(Board *board);
 
     /**
      * Prints the available pieces of the player, This method calls the printPiecesSideBySide method to
@@ -115,13 +118,14 @@ private:
      * @param pstart the start index of the array of pieces to be printed.
      * @param pend the end index of the array of pieces to be printed.
      */
-    void printPiecesSideBySide(Piece** pieces, int pstart, int pend);
+    void printPiecesSideBySide(Piece **pieces, int pstart, int pend);
 };
 
 /**
  * Class that implements a human player that plays according to the input given by the console.
  */
-class HumanPlayer : public Player {
+class HumanPlayer : public Player
+{
 public:
     /**
      * Initializes a human player calling the constructor of the player.
@@ -147,13 +151,14 @@ public:
      *
      * @return an object of type Move containing a piece, its position, its orientation, and its flip..
      */
-    Move* placePiece(Board* board);
+    Move *placePiece(Board *board);
 };
 
 /**
  * Class that implements a computer player that plays randomly.
  */
-class ComputerPlayer : public Player {
+class ComputerPlayer : public Player
+{
 public:
     /**
      * Returns a random id for a piece of the player. Pieces have ids from 1 to 21, so this method
@@ -193,7 +198,7 @@ public:
      *
      * @return an object of type Move containing a piece, its position, its orientation, and its flip..
      */
-    Move* placePiece(Board* board);
+    Move *placePiece(Board *board);
 };
 
 #endif // PLAYER_H
