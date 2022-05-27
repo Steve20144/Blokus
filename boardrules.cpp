@@ -20,12 +20,18 @@ bool Board::pieceCanBePlaced(Piece *piece, int x, int y)
         for (int k = y; k < y + 5; k++)
         {
             if (!playerHasPlacedNoPieces('#') && (squareBelongsToPlayer(i + 1, k + 1, '#') || squareBelongsToPlayer(i - 1, k - 1, '#') || squareBelongsToPlayer(i - 1, k + 1, '#') || squareBelongsToPlayer(i + 1, k + 1, '#')))
-                check = true;
+            {
+                if (!playerHasPlacedNoPieces('#') && (squareBelongsToPlayer(i, k - 1, '#') || squareBelongsToPlayer(i + 1, k, '#') || squareBelongsToPlayer(i, k + 1, '#') || squareBelongsToPlayer(i - 1, k, '#')))
+                    return true;
+            }
             // else
             //     return false;
 
             if (!playerHasPlacedNoPieces('O') && (squareBelongsToPlayer(i + 1, k + 1, 'O') || squareBelongsToPlayer(i - 1, k - 1, 'O') || squareBelongsToPlayer(i - 1, k + 1, 'O') || squareBelongsToPlayer(i + 1, k + 1, 'O')))
-                check = true;
+            {
+                if (!playerHasPlacedNoPieces('O') && (squareBelongsToPlayer(i, k - 1, 'O') || squareBelongsToPlayer(i + 1, k, 'O') || squareBelongsToPlayer(i, k + 1, 'O') || squareBelongsToPlayer(i - 1, k, 'O')))
+                    return true;
+            }
             // else
             //     return false;
         }
@@ -34,21 +40,7 @@ bool Board::pieceCanBePlaced(Piece *piece, int x, int y)
     if (x < 13 && y < 13)
         check = true;
 
-    for (int i = x; i < x + 5; i++)
-    {
-        for (int k = y; k < y + 5; k++)
-        {
-            if (!playerHasPlacedNoPieces('#') && (squareBelongsToPlayer(i, k - 1, '#') || squareBelongsToPlayer(i + 1, k, '#') || squareBelongsToPlayer(i, k + 1, '#') || squareBelongsToPlayer(i - 1, k, '#')))
-                check = false;
-            // else
-            //     return false;
-            if (!playerHasPlacedNoPieces('O') && (squareBelongsToPlayer(i, k - 1, 'O') || squareBelongsToPlayer(i + 1, k, 'O') || squareBelongsToPlayer(i, k + 1, 'O') || squareBelongsToPlayer(i - 1, k, 'O')))
-                check = false;
-            // else
-            //     return false;
-        }
-    }
-    return check;
+    return false;
 }
 
 int Board::computeScore(Player *player)
