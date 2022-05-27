@@ -19,7 +19,7 @@ protected:
     string name;
     int numPieces;  // the number of pieces of the player (initialized to 21)
     Piece **pieces; // the pieces of the player
-    int numPlacedPieces;
+    
 
 public:
     /**
