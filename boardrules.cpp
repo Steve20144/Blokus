@@ -6,9 +6,9 @@
 
 bool Board::pieceCanBePlaced(Piece *piece, int x, int y)
 {
-    if (playerHasPlacedNoPieces(piece->getPlayer()) &&x = 4 &&y = 4)
+    if (playerHasPlacedNoPieces('#') &&x = 4 &&y = 4)
         return true;
-    if (playerHasPlacedNoPieces(piece->getPlayer()) &&x = 9 &&y = 9)
+    if (playerHasPlacedNoPieces('O') &&x = 9 &&y = 9)
         return true;
 
     return true;
