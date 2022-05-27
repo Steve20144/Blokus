@@ -30,9 +30,6 @@ bool Board::pieceCanBePlaced(Piece *piece, int x, int y)
         }
     }
 
-    if (x > 13 && y > 13)
-        return false;
-
     for (int i = x; i < x + 5; i++)
     {
         for (int k = y; k < y + 5; k++)
@@ -48,10 +45,15 @@ bool Board::pieceCanBePlaced(Piece *piece, int x, int y)
         }
     }
 
+    if (x > 13 - piece->getSizeX() && y > piece->getSizeY())
+        return false;
+
     for (int i = x; i < x + 5; i++)
     {
         for (int k = y; k < y + 5; k++)
         {
+            if (!playerHasPlacedNoPieces('#') && hasPiece())
+                return false;
         }
     }
 
