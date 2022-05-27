@@ -6,12 +6,20 @@
 
 bool Board::pieceCanBePlaced(Piece *piece, int x, int y)
 {
-    if (playerHasPlacedNoPieces('#') &&x = 4 &&y = 4)
+    if (playerHasPlacedNoPieces('#') && x == 4 && y == 4)
         return true;
-    if (playerHasPlacedNoPieces('O') &&x = 9 &&y = 9)
+    if (playerHasPlacedNoPieces('O') && x == 9 && y == 9)
         return true;
 
-    return true;
+    if (!playerHasPlacedNoPieces('#') && squareBelongsToPlayer(x + 1, y, '#') || squareBelongsToPlayer(x - 1, y - 1, '#') || squareBelongsToPlayer(x - 1, y + 1, '#') || squareBelongsToPlayer(x + 1, y + 1, '#'))
+        return true;
+
+    if (!playerHasPlacedNoPieces('O') && squareBelongsToPlayer(x + 1, y, 'O') || squareBelongsToPlayer(x - 1, y - 1, 'O') || squareBelongsToPlayer(x - 1, y + 1, 'O') || squareBelongsToPlayer(x + 1, y + 1, 'O'))
+        return true;
+
+    if ()
+
+        return true;
 }
 
 int Board::computeScore(Player *player)
