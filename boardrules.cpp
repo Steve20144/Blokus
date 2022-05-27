@@ -8,18 +8,29 @@ bool Board::pieceCanBePlaced(Piece *piece, int x, int y)
 {
     if (playerHasPlacedNoPieces('#') && x == 4 && y == 4)
         return true;
+    else
+        return false;
     if (playerHasPlacedNoPieces('O') && x == 9 && y == 9)
         return true;
+    else
+        return false;
 
-    if (!playerHasPlacedNoPieces('#') && squareBelongsToPlayer(x + 1, y, '#') || squareBelongsToPlayer(x - 1, y - 1, '#') || squareBelongsToPlayer(x - 1, y + 1, '#') || squareBelongsToPlayer(x + 1, y + 1, '#'))
+    if (!playerHasPlacedNoPieces('#') && (squareBelongsToPlayer(x + 1, y + 1, '#') || squareBelongsToPlayer(x - 1, y - 1, '#') || squareBelongsToPlayer(x - 1, y + 1, '#') || squareBelongsToPlayer(x + 1, y + 1, '#')))
         return true;
+    else
+        return false;
 
-    if (!playerHasPlacedNoPieces('O') && squareBelongsToPlayer(x + 1, y, 'O') || squareBelongsToPlayer(x - 1, y - 1, 'O') || squareBelongsToPlayer(x - 1, y + 1, 'O') || squareBelongsToPlayer(x + 1, y + 1, 'O'))
+    if (!playerHasPlacedNoPieces('O') && (squareBelongsToPlayer(x + 1, y + 1, 'O') || squareBelongsToPlayer(x - 1, y - 1, 'O') || squareBelongsToPlayer(x - 1, y + 1, 'O') || squareBelongsToPlayer(x + 1, y + 1, 'O')))
         return true;
+    else
+        return false;
+
+    if (x < 13 && y < 13)
+        return true;
+    else
+        return false;
 
     if ()
-
-        return true;
 }
 
 int Board::computeScore(Player *player)
