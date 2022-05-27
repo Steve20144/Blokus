@@ -18,12 +18,12 @@ bool Board::pieceCanBePlaced(Piece *piece, int x, int y)
         for (int k = y; k < y + 5; k++)
         {
             if (!playerHasPlacedNoPieces('#') && (squareBelongsToPlayer(i + 1, k + 1, '#') || squareBelongsToPlayer(i - 1, k - 1, '#') || squareBelongsToPlayer(i - 1, k + 1, '#') || squareBelongsToPlayer(i + 1, k + 1, '#')))
-                return true;
+                return false;
             // else
             //     return false;
 
             if (!playerHasPlacedNoPieces('O') && (squareBelongsToPlayer(i + 1, k + 1, 'O') || squareBelongsToPlayer(i - 1, k - 1, 'O') || squareBelongsToPlayer(i - 1, k + 1, 'O') || squareBelongsToPlayer(i + 1, k + 1, 'O')))
-                return true;
+                return false;
             // else
             //     return false;
         }
