@@ -17,16 +17,16 @@ bool Board::pieceCanBePlaced(Piece *piece, int x, int y)
     {
         for (int k = y; k < y + 5; k++)
         {
-            if (!playerHasPlacedNoPieces('#') && (squareBelongsToPlayer(i + 1, k + 1, '#') || squareBelongsToPlayer(i - 1, k - 1, '#') || squareBelongsToPlayer(i - 1, k + 1, '#') || squareBelongsToPlayer(i + 1, k + 1, '#')))
+            if (!playerHasPlacedNoPieces('#')&& !squareBelongsToPlayer(i,j,'0') && (squareBelongsToPlayer(i + 1, k + 1, '#') || squareBelongsToPlayer(i - 1, k - 1, '#') || squareBelongsToPlayer(i - 1, k + 1, '#') || squareBelongsToPlayer(i + 1, k + 1, '#')))
             {if (!playerHasPlacedNoPieces('#') && (squareBelongsToPlayer(i, k - 1, '#') || squareBelongsToPlayer(i + 1, k, '#') || squareBelongsToPlayer(i, k + 1, '#') || squareBelongsToPlayer(i - 1, k, '#')))
-                return false;
+                return true;
             }
             // else
             //     return false;
 
-            if (!playerHasPlacedNoPieces('O') && (squareBelongsToPlayer(i + 1, k + 1, 'O') || squareBelongsToPlayer(i - 1, k - 1, 'O') || squareBelongsToPlayer(i - 1, k + 1, 'O') || squareBelongsToPlayer(i + 1, k + 1, 'O')))
+            if (!playerHasPlacedNoPieces('O') && !squareBelongsToPlayer(i,j,'#') && (squareBelongsToPlayer(i + 1, k + 1, 'O') || squareBelongsToPlayer(i - 1, k - 1, 'O') || squareBelongsToPlayer(i - 1, k + 1, 'O') || squareBelongsToPlayer(i + 1, k + 1, 'O')))
             {if (!playerHasPlacedNoPieces('O') && (squareBelongsToPlayer(i, k - 1, 'O') || squareBelongsToPlayer(i + 1, k, 'O') || squareBelongsToPlayer(i, k + 1, 'O') || squareBelongsToPlayer(i - 1, k, 'O')))
-                return false;
+                return true;
             }
             // else
             //     return false;
