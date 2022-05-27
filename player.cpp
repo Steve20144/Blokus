@@ -7,10 +7,19 @@
 Player::Player(int id)
 {
     this->id = id;
-    cout << "Give your name: " << endl;
-    cin >> name;
+    if (id == 0)
+    {
+        name = "Player-1";
+        symbol = '#';
+    }
+    else if (id == 1)
+    {
+        name = "Player-2";
+        symbol = '#';
+    }
     numPieces = 21;
     // numPlacedPieces = 0;
+    pieces = new Piece *[21];
     createPieces();
 }
 
@@ -18,8 +27,9 @@ Player::~Player()
 {
     for (int i = 0; i < 21; i++)
     {
-        pieces[i]->deleteSquares();
+        delete pieces[i];
     }
+    delete[] pieces;
 }
 
 int Player::getId()

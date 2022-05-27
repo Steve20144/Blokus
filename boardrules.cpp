@@ -22,7 +22,7 @@ bool Board::pieceCanBePlaced(Piece *piece, int x, int y)
             // else
             //     return false;
 
-            if (piece->getPlayer() == 'O' !playerHasPlacedNoPieces('O') && !(squareBelongsToPlayer(i + 1, k + 1, 'O') || squareBelongsToPlayer(i - 1, k - 1, 'O') || squareBelongsToPlayer(i - 1, k + 1, 'O') || squareBelongsToPlayer(i + 1, k + 1, 'O')))
+            if (piece->getPlayer() == 'O' && !playerHasPlacedNoPieces('O') && !(squareBelongsToPlayer(i + 1, k + 1, 'O') || squareBelongsToPlayer(i - 1, k - 1, 'O') || squareBelongsToPlayer(i - 1, k + 1, 'O') || squareBelongsToPlayer(i + 1, k + 1, 'O')))
 
                 return false;
             // else
@@ -52,7 +52,7 @@ bool Board::pieceCanBePlaced(Piece *piece, int x, int y)
     {
         for (int k = y; k < y + 5; k++)
         {
-            if (!playerHasPlacedNoPieces('#') && hasPiece())
+            if (!playerHasPlacedNoPieces('#') && hasPiece(i, k))
                 return false;
         }
     }
