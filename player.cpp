@@ -76,21 +76,14 @@ int Player::getNumberOfAvailablePieces()
     return 21 - getNumberOfPlacedPieces();
 }
 
-HumanPlayer::HumanPlayer(int id) : Player(id)
-{
-    this->id = id;
-}
+HumanPlayer::HumanPlayer(int id) : Player(id) {}
 
 HumanPlayer::HumanPlayer(int id, string name) : Player(id)
 {
     this->name = name;
-    this->id = id;
 }
 
-ComputerPlayer::ComputerPlayer(int id) : Player(id)
-{
-    this->id = id;
-}
+ComputerPlayer::ComputerPlayer(int id) : Player(id) {}
 
 int ComputerPlayer::getRandomPieceId()
 {
@@ -99,10 +92,10 @@ int ComputerPlayer::getRandomPieceId()
 
 Orientation ComputerPlayer::getRandomOrientation()
 {
-    return (rand() % 4);
+    return (Orientation)(rand() % 5);
 }
 
 Flip ComputerPlayer::getRandomFlip()
 {
-    return (rand() % 2);
+    return (Flip)(rand() % 2);
 }
