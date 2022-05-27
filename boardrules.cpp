@@ -6,6 +6,7 @@
 
 bool Board::pieceCanBePlaced(Piece *piece, int x, int y)
 {
+
     if (playerHasPlacedNoPieces('#') && x == 4 && y == 4)
         return true;
     else
@@ -20,10 +21,17 @@ bool Board::pieceCanBePlaced(Piece *piece, int x, int y)
     else
         return false;
 
-    if (!playerHasPlacedNoPieces('O') && (squareBelongsToPlayer(x + 1, y + 1, 'O') || squareBelongsToPlayer(x - 1, y - 1, 'O') || squareBelongsToPlayer(x - 1, y + 1, 'O') || squareBelongsToPlayer(x + 1, y + 1, 'O')))
-        return true;
-    else
-        return false;
+    for (int i = x; i < x + 5; i++)
+    {
+        for (int k = y; k < y + 5; k++)
+        {
+
+            if (!playerHasPlacedNoPieces('O') && (squareBelongsToPlayer(i + 1, k + 1, 'O') || squareBelongsToPlayer(i - 1, k - 1, 'O') || squareBelongsToPlayer(i - 1, k + 1, 'O') || squareBelongsToPlayer(i + 1, k + 1, 'O')))
+                return true;
+            else
+                return false;
+        }
+    }
 
     if (x < 13 && y < 13)
         return true;
