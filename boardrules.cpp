@@ -5,48 +5,50 @@
 // Do not implement any other methods of Board (as they are already implemented in file board.cpp)
 
 bool Board::pieceCanBePlaced(Piece *piece, int x, int y)
+
 {
+    bool check;
 
     if (playerHasPlacedNoPieces('#') && x == 4 && y == 4)
-        return true;
+        check = true;
 
     if (playerHasPlacedNoPieces('O') && x == 9 && y == 9)
-        return true;
+        check = true;
 
     for (int i = x; i < x + 5; i++)
     {
         for (int k = y; k < y + 5; k++)
         {
             if (!playerHasPlacedNoPieces('#') && (squareBelongsToPlayer(i + 1, k + 1, '#') || squareBelongsToPlayer(i - 1, k - 1, '#') || squareBelongsToPlayer(i - 1, k + 1, '#') || squareBelongsToPlayer(i + 1, k + 1, '#')))
-                return false;
+                check = true;
             // else
             //     return false;
 
             if (!playerHasPlacedNoPieces('O') && (squareBelongsToPlayer(i + 1, k + 1, 'O') || squareBelongsToPlayer(i - 1, k - 1, 'O') || squareBelongsToPlayer(i - 1, k + 1, 'O') || squareBelongsToPlayer(i + 1, k + 1, 'O')))
-                return false;
+                check = true;
             // else
             //     return false;
         }
     }
 
     if (x < 13 && y < 13)
-        return true;
+        check = true;
 
     for (int i = x; i < x + 5; i++)
     {
         for (int k = y; k < y + 5; k++)
         {
             if (!playerHasPlacedNoPieces('#') && (squareBelongsToPlayer(i, k - 1, '#') || squareBelongsToPlayer(i + 1, k, '#') || squareBelongsToPlayer(i, k + 1, '#') || squareBelongsToPlayer(i - 1, k, '#')))
-                return true;
+                check = false;
             // else
             //     return false;
             if (!playerHasPlacedNoPieces('O') && (squareBelongsToPlayer(i, k - 1, 'O') || squareBelongsToPlayer(i + 1, k, 'O') || squareBelongsToPlayer(i, k + 1, 'O') || squareBelongsToPlayer(i - 1, k, 'O')))
-                return true;
+                check = false;
             // else
             //     return false;
         }
     }
-    return false;
+    return check;
 }
 
 int Board::computeScore(Player *player)
