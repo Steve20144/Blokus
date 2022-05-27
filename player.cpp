@@ -2,8 +2,6 @@
 #include <cstdlib>
 #include "player.h"
 
-
-
 // TODO: Implement here the methods of Player and all derived classes
 
 Player::Player(int id)
@@ -16,16 +14,12 @@ Player::Player(int id)
     createPieces();
 }
 
-Player::~Player(){
-for(int l=0;l<21;l++){
-    for(int i=0;i<5;i++){
-        for(int k=0;k<5;k++){
-            if(pieces[i][k].getId == l){
-                pieces[i][k].deleteSquares();
-            }
-        }
+Player::~Player()
+{
+    for (int i = 0; i < 21; i++)
+    {
+        pieces[i]->deleteSquares();
     }
-}
 }
 
 int Player::getId()
@@ -59,52 +53,56 @@ string Player::getName()
 
 Piece *Player::getPiece(int index)
 {
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 21; i++)
     {
-        for (int k = 0; k < 5; k++)
-        {
-            if (pieces[i][k].getId() == index)
-
-                return (*(pieces + i) + k);
-        }
+        if (pieces[i]->getId() == index)
+            return pieces[i];
     }
 }
 
-int Player::getNumberOfAvailablePieces()
+int Player::getNumberOfPlacedPieces()
 {
     int counter = 0;
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 21; i++)
     {
-        for (int k = 0; k < 5; k++)
-        {
-            if (pieces[i][k].isPlaced() == true)
-                counter++;
-        }
+        if (pieces[i]->isPlaced())
+            counter++;
     }
     return counter;
 }
 
-HumanPlayer::HumanPlayer(int id):Player(id){
+int Player::getNumberOfAvailablePieces()
+{
+    return 21 - getNumberOfPlacedPieces();
+}
+
+HumanPlayer::HumanPlayer(int id) : Player(id)
+{
     this->id = id;
 }
 
-HumanPlayer::HumanPlayer(int id,string name):Player(id){
+HumanPlayer::HumanPlayer(int id, string name) : Player(id)
+{
     this->name = name;
-    this->id=id;
-}
-
-ComputerPlayer::ComputerPlayer(int id):Player(id){
     this->id = id;
 }
 
-int ComputerPlayer::getRandomPieceId(){
-   return (1+rand()%21);
+ComputerPlayer::ComputerPlayer(int id) : Player(id)
+{
+    this->id = id;
 }
 
-Orientation ComputerPlayer::getRandomOrientation(){
-    return (rand()%4);
+int ComputerPlayer::getRandomPieceId()
+{
+    return (1 + rand() % 21);
 }
 
-Flip ComputerPlayer::getRandomFlip(){
-    return(rand()%2);
+Orientation ComputerPlayer::getRandomOrientation()
+{
+    return (rand() % 4);
+}
+
+Flip ComputerPlayer::getRandomFlip()
+{
+    return (rand() % 2);
 }
