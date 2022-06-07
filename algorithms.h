@@ -18,7 +18,7 @@ void shuffle(X **myArray, int myArraySize)
     for (int i = myArraySize; i >= 1; i--)
     {
         int j = rand() % (i + 1);
-        *(*(myArray + i)) = *(*(myArray + j));
+        myArray[i] = myArray[j];
     }
 }
 
@@ -55,4 +55,5 @@ X *getElementWithMaxScore(X **myArray, int *myArrayScore, int myArraySize)
     }
 
     // return myArray[0];
+
 }
