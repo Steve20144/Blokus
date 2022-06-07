@@ -11,8 +11,15 @@ using namespace std;
  * @param myArray the array to be shuffled.
  * @param myArraySize the size of the array to be shuffled.
  */
-template <class X> void shuffle(X** myArray, int myArraySize){
+template <class X>
+void shuffle(X **myArray, int myArraySize)
+{
     // TODO: Implement here the shuffle algorithm
+    for (int i = myArraySize; i >= 1; i--)
+    {
+        int j = rand() % (i + 1);
+        *(*(myArray + i)) = *(*(myArray + j));
+    }
 }
 
 /**
@@ -31,7 +38,21 @@ template <class X> void shuffle(X** myArray, int myArraySize){
  * @return the element of myArray (type X*) that is in the corresponding position of the maximum score
  *         according to array myArrayScore.
  */
-template <class X> X* getElementWithMaxScore(X** myArray, int* myArrayScore, int myArraySize){
+template <class X>
+X *getElementWithMaxScore(X **myArray, int *myArrayScore, int myArraySize)
+{
     // TODO: Implement here the algorithm for the element with max score
-    return myArray[0];
+    int max = 0;
+    for (int i = 0; i < myArraySize; i++)
+    {
+        if (myArrayScore[i] > max)
+            max = myArrayScore[i];
+    }
+    for (int i = 0; i < myArraySize; i++)
+    {
+        if (i == max)
+            return myArray[i];
+    }
+
+    // return myArray[0];
 }
