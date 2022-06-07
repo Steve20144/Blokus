@@ -50,7 +50,7 @@ X *getElementWithMaxScore(X **myArray, int *myArrayScore, int myArraySize)
     }
     for (int i = 0; i < myArraySize; i++)
     {
-        if (i == max)
+        if (myArrayScore[i] == max)
             return myArray[i];
     }
 
