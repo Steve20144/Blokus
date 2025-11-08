@@ -1,48 +1,42 @@
 #include <iostream>
 #include "square.h"
 
-// TODO: Implement here the methods of Square
-Square::Square()
-{
-    x = -1;
-    y = -1;
+Square::Square(int x, int y){
+    this->x = x;
+    this->y = y;
     player = '-';
 }
 
-void Square::setCoordinates(int newx, int newy)
-{
-    x = newx;
-    y = newy;
+Square::Square(int x, int y, char player){
+    this->x = x;
+    this->y = y;
+    this->player = player;
 }
 
-int Square::getX()
-{
+int Square::getX() {
     return x;
 }
-int Square::getY()
-{
+
+int Square::getY(){
     return y;
 }
 
-void Square::addPiece(char piecePlayer)
-{
-    player = piecePlayer;
+void Square::addPiece(char player) {
+    this->player = player;
 }
 
-void Square::removePiece()
-{
+char Square::getPlayer(){
+    return player;
+}
+
+void Square::removePiece() {
     player = '-';
 }
 
-bool Square::hasPiece()
-{
-    if (player == '-')
-        return false;
-    else
-        return true;
+bool Square::hasPiece() {
+    return player != '-';
 }
 
-char Square::getPlayer()
-{
-    return player;
+bool Square::hasPiece(char player){
+    return this->player == player;
 }

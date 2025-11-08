@@ -1,34 +1,33 @@
 #include "move.h"
 
-Move::Move(Piece movePiece, int moveX, int moveY, char moveOrientation, char moveFlip)
-{
-    piece = movePiece;
-    x = moveX;
-    y = moveY;
-    orientation = moveOrientation;
-    flip = moveFlip;
+Move::Move(Piece* piece, int x, int y, Orientation orientation, Flip flip){
+    this->piece = piece;
+    this->x = x;
+    this->y = y;
+    this->orientation = orientation;
+    this->flip = flip;
 }
 
-int Move::getX()
-{
-    return x;
-}
-int Move::getY()
-{
-    return y;
-}
-char Move::getOrientation()
-{
-    return orientation;
-}
-char Move::getFlip()
-{
-    return flip;
+void Move::setPiece(Piece* piece){
+    this->piece = piece;
 }
 
-Piece Move::getPiece()
-{
+Piece* Move::getPiece(){
     return piece;
 }
 
-// TODO: Implement here the methods of Move
+int Move::getX(){
+    return x;
+}
+
+int Move::getY(){
+    return y;
+}
+
+Orientation Move::getOrientation(){
+    return orientation;
+}
+
+Flip Move::getFlip(){
+    return flip;
+}
